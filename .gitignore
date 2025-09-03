@@ -25,3 +25,6 @@ dist-ssr
 
 *storybook.log
 storybook-static
+*/.next/
+./docs/node_modules/
+_pagefind/
