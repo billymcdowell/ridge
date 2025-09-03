@@ -1,0 +1,25 @@
+{
+  "name": "@ridge/tokens",
+  "version": "0.1.0",
+  "description": "Design tokens for Ridge design system",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+    "scripts": {
+      "build": "tsx build/generate-css.ts && npm run build:js",
+      "build:js": "tsc",
+      "dev": "npm run build -- --watch"
+    },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.5",
+    "rollup": "^4.9.0",
+    "typescript": "^5.3.0",
+    "rimraf": "^5.0.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
