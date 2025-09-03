@@ -7,8 +7,9 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@angular-builders/custom-webpack:browser",
       "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/apps/angular-example",
         "index": "apps/angular-example/src/index.html",
@@ -18,11 +19,15 @@
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/angular-example/public"
+            "input": "apps/angular-example/public",
+            "output": "/"
           }
         ],
         "styles": ["apps/angular-example/src/styles.css"],
-        "scripts": []
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/angular-example/webpack.config.js"
+        }
       },
       "configurations": {
         "production": {
@@ -52,7 +57,7 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@angular-builders/custom-webpack:dev-server",
       "configurations": {
         "production": {
           "buildTarget": "angular-example:build:production"
