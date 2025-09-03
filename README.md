@@ -1,82 +1,194 @@
-# Ridge
+# Ridge Web Components Library 🚧
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+> **⚠️ MVP STATUS**: This is an early-stage MVP (Minimum Viable Product) setup of the Ridge web components library. The current implementation includes basic functionality and serves as a foundation for future development. Full functionality and comprehensive component library coming soon!
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
+A modern web component library built with [Lit](https://lit.dev/) and TypeScript, designed to provide reusable, accessible UI components for modern web applications.
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+## 🚀 Current MVP Features
 
-## Finish your CI setup
+### ✅ What's Working Now
+- **Button Component**: Fully functional button component with multiple variants and states
+- **TypeScript Support**: Full type safety and IntelliSense support
+- **Storybook Integration**: Interactive component documentation and testing
+- **Build System**: Vite-powered build with UMD and ES module outputs
+- **Development Environment**: Hot reload and development server
 
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/RESMaVbx3O)
+### 🎯 Button Component Features
+- **5 Variants**: Primary, Secondary, Outline, Ghost, Danger
+- **3 Sizes**: Small, Medium, Large
+- **Interactive States**: Hover, active, disabled, loading
+- **Accessibility**: ARIA attributes and keyboard navigation
+- **Link Support**: Can render as anchor tags with href
+- **Custom Events**: Dispatches `button-click` events
+- **Visual Effects**: Ripple animation and loading spinner
 
+## 📦 Installation & Usage
 
-## Run tasks
-
-To run the dev server for your app, use:
-
-```sh
-npx nx serve angular-example
+### Installation
+```bash
+npm install ridge-ui
 ```
 
-To create a production bundle:
+### Basic Usage
+```html
+<!-- Import the component -->
+<script type="module">
+  import 'ridge-ui';
+</script>
 
-```sh
-npx nx build angular-example
+<!-- Use in your HTML -->
+<rdg-button variant="primary" size="medium">
+  Click me!
+</rdg-button>
 ```
 
-To see all available targets to run for a project, run:
+### TypeScript Usage
+```typescript
+import { RdgButton } from 'ridge-ui';
+import type { ButtonVariant, ButtonSize } from 'ridge-ui';
 
-```sh
-npx nx show project angular-example
+// Create programmatically
+const button = document.createElement('rdg-button') as RdgButton;
+button.variant = 'primary';
+button.size = 'large';
+button.textContent = 'Dynamic Button';
 ```
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+## 🛠 Development
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### Prerequisites
+- Node.js 16+ 
+- npm or yarn
 
-## Add new projects
+### Setup
+```bash
+# Clone the repository
+git clone https://github.com/billymcdowell/ridge-ui.git
+cd ridge-ui
 
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
+# Install dependencies
+npm install
 
-Use the plugin's generator to create new projects.
+# Start development server
+npm run dev
 
-To generate a new application, use:
-
-```sh
-npx nx g @nx/angular:app demo
+# Launch Storybook for component development
+npm run storybook
 ```
 
-To generate a new library, use:
+### Available Scripts
+- `npm run dev` - Start Vite development server
+- `npm run build` - Build library for production
+- `npm run preview` - Preview production build
+- `npm run storybook` - Launch Storybook development server
+- `npm run build-storybook` - Build Storybook for deployment
 
-```sh
-npx nx g @nx/angular:lib mylib
+## 🎨 Component Examples
+
+### Button Variants
+```html
+<rdg-button variant="primary">Primary</rdg-button>
+<rdg-button variant="secondary">Secondary</rdg-button>
+<rdg-button variant="outline">Outline</rdg-button>
+<rdg-button variant="ghost">Ghost</rdg-button>
+<rdg-button variant="danger">Danger</rdg-button>
 ```
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
+### Button States
+```html
+<rdg-button disabled>Disabled</rdg-button>
+<rdg-button loading>Loading...</rdg-button>
+<rdg-button href="https://example.com">Link Button</rdg-button>
+```
 
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## 🚧 Roadmap & Coming Features
 
+### 🔄 Phase 1 (Current MVP)
+- [x] Button component with variants and states
+- [x] TypeScript definitions
+- [x] Storybook documentation
+- [x] Basic build system
 
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### 📋 Phase 2 (Next Release)
+- [ ] Input components (text, email, password, etc.)
+- [ ] Form validation utilities
+- [ ] Checkbox and Radio components
+- [ ] Select/Dropdown component
+- [ ] Comprehensive testing suite
 
-## Install Nx Console
+### 🎯 Phase 3 (Future Releases)
+- [ ] Layout components (Grid, Flex, Container)
+- [ ] Navigation components (Navbar, Breadcrumbs, Pagination)
+- [ ] Feedback components (Alert, Toast, Modal)
+- [ ] Data display components (Table, Card, Badge)
+- [ ] Advanced components (Datepicker, Autocomplete, Charts)
 
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
+### 🎨 Design System Features
+- [ ] CSS custom properties for theming
+- [ ] Dark/light mode support
+- [ ] Design tokens integration
+- [ ] Responsive design utilities
+- [ ] Animation system
 
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### 🔧 Developer Experience
+- [ ] CLI for component generation
+- [ ] Figma design kit integration
+- [ ] Comprehensive documentation site
+- [ ] Migration guides
+- [ ] Performance optimization
 
-## Useful links
+## 🏗 Architecture
 
-Learn more:
+### Current Structure
+```
+ridge-ui/
+├── src/
+│   ├── components/
+│   │   └── button/           # Button component
+│   └── index.ts              # Main entry point
+├── dist/                     # Built library files
+├── .storybook/               # Storybook configuration
+└── package.json              # Package configuration
+```
 
-- [Learn more about this workspace setup](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### Technology Stack
+- **Framework**: [Lit](https://lit.dev/) - Lightweight web components
+- **Language**: TypeScript for type safety
+- **Build Tool**: [Vite](https://vitejs.dev/) for fast development and building
+- **Documentation**: [Storybook](https://storybook.js.org/) for component stories
+- **Styling**: CSS-in-JS with Lit's `css` template
 
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## 🤝 Contributing
+
+This project is in active development! We welcome contributions, feedback, and suggestions.
+
+### Current Contribution Areas
+- Bug fixes and improvements to existing components
+- Accessibility enhancements
+- Documentation improvements
+- Test coverage expansion
+- New component proposals (for future phases)
+
+### Getting Started
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test with Storybook
+5. Submit a pull request
+
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE) file for details.
+
+## 🔗 Links
+
+- **Repository**: https://github.com/billymcdowell/ridge-ui
+- **Issues**: https://github.com/billymcdowell/ridge-ui/issues
+- **Storybook**: [Coming soon - deployed documentation]
+- **NPM Package**: [Coming soon - published package]
+
+---
+
+**Note**: Ridge is currently in MVP development phase. APIs may change between versions until we reach v1.0. We recommend using this library for experimentation and feedback rather than production applications at this time.
+
+*Built with ❤️ using modern web standards*
