@@ -32,9 +32,9 @@
   "license": "MIT",
   "scripts": {
     "docs:dev": "cd docs && next",
-    "docs:build": "cd docs && next build && pagefind --site .next/server/app --output-path public/_pagefind",
+    "docs:build": "cd docs && next build && pagefind --site out --output-path public/_pagefind",
     "docs:preview": "cd docs && next start",
-    "docs:postbuild": "cd docs && pagefind --site .next/server/app --output-path public/_pagefind",
+    "docs:postbuild": "cd docs && pagefind --site out --output-path public/_pagefind",
     "lib:build": "tsc && vite build",
     "lib:preview": "vite preview",
     "storybook:dev": "storybook dev -p 6006",
