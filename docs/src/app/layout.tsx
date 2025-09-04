@@ -5,14 +5,15 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "nextra-theme-docs/style.css";
 import "./globals.css";
+import Logo from "./logo";
 
 export const metadata: Metadata = {
   title: "Nextra 4",
   description: "Nextra 4 is here.",
 };
 
-const banner = <Banner storageKey="some-key">Nextra 4.0 is released 🎉</Banner>;
-const footer = <Footer>MIT {new Date().getFullYear()} © Nextra.</Footer>;
+const banner = <Banner storageKey="some-key">Documentation coming soon.</Banner>;
+const footer = <Footer>MIT {new Date().getFullYear()} © Ridge Web Components.</Footer>;
 
 export default async function RootLayout({
   children,
@@ -27,12 +28,12 @@ export default async function RootLayout({
           banner={banner}
           navbar={
             <Navbar
-              logo={<h1 className="text-2xl"> Nextra</h1>}
-              projectLink="https://github.com/officialrajdeepsingh/nextra-4"
+              logo={<Logo />}
+              projectLink="https://github.com/billymcdowell/ridge"
             />
           }
           pageMap={await getPageMap()}
-          docsRepositoryBase="https://github.com/officialrajdeepsingh/nextra-4/tree/main/docs"
+          docsRepositoryBase="https://github.com/billymcdowell/ridge/tree/main/docs"
           editLink="Edit this page on GitHub"
           sidebar={{ defaultMenuCollapseLevel: 1, autoCollapse: true }}
           footer={footer}

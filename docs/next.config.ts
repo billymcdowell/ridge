@@ -12,6 +12,7 @@ const withNextra = nextra({
 
 const nextConfig: NextConfig = withNextra({
   reactStrictMode: true,
+  output: 'export',
 });
 
 export default nextConfig;

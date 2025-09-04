@@ -28,3 +28,4 @@ storybook-static
 */.next/
 ./docs/node_modules/
 _pagefind/
+docs/out/
