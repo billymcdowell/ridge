@@ -80,7 +80,7 @@ jobs:
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Pagefind
-        run: ${{ steps.detect-package-manager.outputs.runner }} -y pagefind --site out --output-path public/_pagefind
+        run: ${{ steps.detect-package-manager.outputs.runner }} -y pagefind --site out --output-path out/_pagefind
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
