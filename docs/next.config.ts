@@ -12,7 +12,11 @@ const withNextra = nextra({
 
 const nextConfig: NextConfig = withNextra({
   reactStrictMode: true,
+  basePath: '/ridge',
   output: 'export',
+  images: {
+    unoptimized: true,
+  },
 });
 
 export default nextConfig;
