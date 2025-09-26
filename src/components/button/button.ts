@@ -136,7 +136,7 @@ export class RdgButton extends LitElement {
     }
 
     .danger {
-      background-color: #dc2626;
+      background-color: #dc2627;
       color: white;
     }
 
