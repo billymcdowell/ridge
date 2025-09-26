@@ -141,7 +141,7 @@ export class RdgButton extends LitElement {
     }
 
     .danger:hover:not(:disabled) {
-      background-color: #b91c1c;
+      background-color: #b91c1b;
     }
 
     .danger:active:not(:disabled) {
