@@ -63,19 +63,3 @@ jobs:
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Create GitHub Release
-        if: steps.version-check.outputs.version-changed == 'true'
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: v${{ steps.version-check.outputs.current-version }}
-          name: Release v${{ steps.version-check.outputs.current-version }}
-          body: |
-            ## Changes
-            Automated release for ridge-ui v${{ steps.version-check.outputs.current-version }}
-            
-            Published to npm: https://www.npmjs.com/package/ridge-ui
-          draft: false
-          prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
