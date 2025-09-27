@@ -29,11 +29,11 @@ export default async function RootLayout({
           navbar={
             <Navbar
               logo={<Logo />}
-              projectLink="https://github.com/billymcdowell/ridge"
+              projectLink="https://github.com/billymcdowell/ridge-ui"
             />
           }
           pageMap={await getPageMap()}
-          docsRepositoryBase="https://github.com/billymcdowell/ridge/tree/main/docs"
+          docsRepositoryBase="https://github.com/billymcdowell/ridge-ui/tree/main/docs"
           editLink="Edit this page on GitHub"
           sidebar={{ defaultMenuCollapseLevel: 1, autoCollapse: true }}
           footer={footer}

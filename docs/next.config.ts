@@ -12,7 +12,7 @@ const withNextra = nextra({
 
 const nextConfig: NextConfig = withNextra({
   reactStrictMode: true,
-  basePath: '/ridge',
+  basePath: '/ridge-ui',
   output: 'export',
   images: {
     unoptimized: true,
