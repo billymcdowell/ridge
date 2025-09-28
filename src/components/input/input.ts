@@ -77,15 +77,15 @@ export class RdgInput extends LitElement {
 
     .label {
       display: block;
-      font-family: system-ui, -apple-system, sans-serif;
-      font-weight: 500;
-      margin-bottom: 0.375rem;
-      color: #374151;
+      font-family: var(--rdg-font-family);
+      font-weight: var(--rdg-font-weight-medium);
+      margin-bottom: var(--rdg-space-1);
+      color: var(--rdg-text-secondary);
     }
 
     .label.required::after {
       content: ' *';
-      color: #dc2626;
+      color: var(--rdg-error);
     }
 
     .input-wrapper {
@@ -99,24 +99,24 @@ export class RdgInput extends LitElement {
       width: 100%;
       border: none;
       outline: none;
-      font-family: system-ui, -apple-system, sans-serif;
-      transition: all 0.2s ease-in-out;
+      font-family: var(--rdg-font-family);
+      transition: all var(--rdg-transition);
       background: transparent;
-      color: #111827;
+      color: var(--rdg-text-primary);
     }
 
     .input::placeholder {
-      color: #9ca3af;
+      color: var(--rdg-text-placeholder);
     }
 
     .input:disabled {
       cursor: not-allowed;
       opacity: 0.6;
-      color: #6b7280;
+      color: var(--rdg-text-disabled);
     }
 
     .input:disabled::placeholder {
-      color: #d1d5db;
+      color: var(--rdg-text-disabled);
     }
 
     /* Leading Icon */
@@ -125,7 +125,7 @@ export class RdgInput extends LitElement {
       left: 0;
       top: 50%;
       transform: translateY(-50%);
-      color: #6b7280;
+      color: var(--rdg-text-tertiary);
       pointer-events: none;
       z-index: 1;
     }
@@ -136,7 +136,7 @@ export class RdgInput extends LitElement {
       right: 0;
       top: 50%;
       transform: translateY(-50%);
-      color: #6b7280;
+      color: var(--rdg-text-tertiary);
       cursor: pointer;
       z-index: 1;
     }
@@ -146,178 +146,178 @@ export class RdgInput extends LitElement {
     }
 
     .trailing-icon.password-toggle:hover {
-      color: #374151;
+      color: var(--rdg-text-secondary);
     }
 
     /* Sizes */
     .small .input {
-      padding: 0.375rem 0.75rem;
-      font-size: 0.875rem;
-      line-height: 1.25rem;
+      padding: var(--rdg-space-1) var(--rdg-space-3);
+      font-size: var(--rdg-font-size-sm);
+      line-height: var(--rdg-line-height-tight);
     }
 
     .small .input.has-leading-icon {
-      padding-left: 2rem;
+      padding-left: var(--rdg-space-8);
     }
 
     .small .input.has-trailing-icon {
-      padding-right: 2rem;
+      padding-right: var(--rdg-space-8);
     }
 
     .small .leading-icon {
-      left: 0.5rem;
+      left: var(--rdg-space-2);
       width: 1rem;
       height: 1rem;
     }
 
     .small .trailing-icon {
-      right: 0.5rem;
+      right: var(--rdg-space-2);
       width: 1rem;
       height: 1rem;
     }
 
     .medium .input {
-      padding: 0.5rem 1rem;
-      font-size: 0.875rem;
-      line-height: 1.25rem;
+      padding: var(--rdg-space-2) var(--rdg-space-4);
+      font-size: var(--rdg-font-size-sm);
+      line-height: var(--rdg-line-height-tight);
     }
 
     .medium .input.has-leading-icon {
-      padding-left: 2.5rem;
+      padding-left: var(--rdg-space-10);
     }
 
     .medium .input.has-trailing-icon {
-      padding-right: 2.5rem;
+      padding-right: var(--rdg-space-10);
     }
 
     .medium .leading-icon {
-      left: 0.75rem;
+      left: var(--rdg-space-3);
       width: 1.125rem;
       height: 1.125rem;
     }
 
     .medium .trailing-icon {
-      right: 0.75rem;
+      right: var(--rdg-space-3);
       width: 1.125rem;
       height: 1.125rem;
     }
 
     .large .input {
-      padding: 0.75rem 1.25rem;
-      font-size: 1rem;
-      line-height: 1.5rem;
+      padding: var(--rdg-space-3) var(--rdg-space-5);
+      font-size: var(--rdg-font-size-base);
+      line-height: var(--rdg-line-height-normal);
     }
 
     .large .input.has-leading-icon {
-      padding-left: 3rem;
+      padding-left: var(--rdg-space-12);
     }
 
     .large .input.has-trailing-icon {
-      padding-right: 3rem;
+      padding-right: var(--rdg-space-12);
     }
 
     .large .leading-icon {
-      left: 1rem;
+      left: var(--rdg-space-4);
       width: 1.25rem;
       height: 1.25rem;
     }
 
     .large .trailing-icon {
-      right: 1rem;
+      right: var(--rdg-space-4);
       width: 1.25rem;
       height: 1.25rem;
     }
 
     /* Outlined Variant */
     .outlined .input-wrapper {
-      border: 1px solid #d1d5db;
-      border-radius: 0.375rem;
-      background-color: #ffffff;
+      border: 1px solid var(--rdg-border-primary);
+      border-radius: var(--rdg-radius);
+      background-color: var(--rdg-background);
     }
 
     .outlined .input-wrapper:hover:not(.disabled) {
-      border-color: #9ca3af;
+      border-color: var(--rdg-border-hover);
     }
 
     .outlined .input-wrapper.focused {
-      border-color: #3b82f6;
-      box-shadow: 0 0 0 1px #3b82f6;
+      border-color: var(--rdg-border-focus);
+      box-shadow: 0 0 0 1px var(--rdg-border-focus);
     }
 
     .outlined .input-wrapper.error {
-      border-color: #dc2626;
-      box-shadow: 0 0 0 1px #dc2626;
+      border-color: var(--rdg-border-error);
+      box-shadow: 0 0 0 1px var(--rdg-border-error);
     }
 
     .outlined .input-wrapper.disabled {
-      background-color: #f9fafb;
-      border-color: #e5e7eb;
+      background-color: var(--rdg-surface-disabled);
+      border-color: var(--rdg-border-disabled);
     }
 
     /* Filled Variant */
     .filled .input-wrapper {
       border: 1px solid transparent;
-      border-radius: 0.375rem;
-      background-color: #f3f4f6;
+      border-radius: var(--rdg-radius);
+      background-color: var(--rdg-surface-variant);
     }
 
     .filled .input-wrapper:hover:not(.disabled) {
-      background-color: #e5e7eb;
+      background-color: var(--rdg-surface-hover);
     }
 
     .filled .input-wrapper.focused {
-      background-color: #ffffff;
-      border-color: #3b82f6;
-      box-shadow: 0 0 0 1px #3b82f6;
+      background-color: var(--rdg-background);
+      border-color: var(--rdg-border-focus);
+      box-shadow: 0 0 0 1px var(--rdg-border-focus);
     }
 
     .filled .input-wrapper.error {
-      background-color: #fef2f2;
-      border-color: #dc2626;
-      box-shadow: 0 0 0 1px #dc2626;
+      background-color: var(--rdg-error-lighter);
+      border-color: var(--rdg-border-error);
+      box-shadow: 0 0 0 1px var(--rdg-border-error);
     }
 
     .filled .input-wrapper.disabled {
-      background-color: #f9fafb;
-      border-color: #e5e7eb;
+      background-color: var(--rdg-surface-disabled);
+      border-color: var(--rdg-border-disabled);
     }
 
     /* Plain Variant */
     .plain .input-wrapper {
       border: none;
-      border-bottom: 1px solid #d1d5db;
+      border-bottom: 1px solid var(--rdg-border-primary);
       border-radius: 0;
       background-color: transparent;
     }
 
     .plain .input-wrapper:hover:not(.disabled) {
-      border-bottom-color: #9ca3af;
+      border-bottom-color: var(--rdg-border-hover);
     }
 
     .plain .input-wrapper.focused {
-      border-bottom-color: #3b82f6;
-      box-shadow: 0 1px 0 0 #3b82f6;
+      border-bottom-color: var(--rdg-border-focus);
+      box-shadow: 0 1px 0 0 var(--rdg-border-focus);
     }
 
     .plain .input-wrapper.error {
-      border-bottom-color: #dc2626;
-      box-shadow: 0 1px 0 0 #dc2626;
+      border-bottom-color: var(--rdg-border-error);
+      box-shadow: 0 1px 0 0 var(--rdg-border-error);
     }
 
     .plain .input-wrapper.disabled {
-      border-bottom-color: #e5e7eb;
+      border-bottom-color: var(--rdg-border-disabled);
     }
 
     /* Helper Text */
     .helper-text {
-      margin-top: 0.375rem;
-      font-size: 0.75rem;
+      margin-top: var(--rdg-space-1);
+      font-size: var(--rdg-font-size-xs);
       line-height: 1rem;
-      color: #6b7280;
+      color: var(--rdg-text-tertiary);
     }
 
     .helper-text.error {
-      color: #dc2626;
+      color: var(--rdg-error);
     }
 
     /* Focus styles */
@@ -344,14 +344,14 @@ export class RdgInput extends LitElement {
     }
 
     .password-toggle:hover {
-      color: #374151;
+      color: var(--rdg-text-secondary);
     }
 
     .password-toggle:focus {
       outline: 2px solid transparent;
-      outline-offset: 2px;
-      box-shadow: 0 0 0 2px #3b82f6;
-      border-radius: 2px;
+      outline-offset: var(--rdg-focus-ring-offset);
+      box-shadow: 0 0 0 2px var(--rdg-focus-ring);
+      border-radius: var(--rdg-radius-sm);
     }
   `;
 

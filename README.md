@@ -8,10 +8,13 @@ A modern web component library built with [Lit](https://lit.dev/) and TypeScript
 
 ### ✅ What's Working Now
 - **Button Component**: Fully functional button component with multiple variants and states
+- **Input Component**: Text, password, and email inputs with validation and icons
+- **Dropdown Component**: Select dropdown with multi-select, search, and customization options
 - **TypeScript Support**: Full type safety and IntelliSense support
 - **Storybook Integration**: Interactive component documentation and testing
 - **Build System**: Vite-powered build with UMD and ES module outputs
 - **Development Environment**: Hot reload and development server
+- **Documentation Site**: Next.js-powered documentation with search functionality
 
 ### 🎯 Button Component Features
 - **5 Variants**: Primary, Secondary, Outline, Ghost, Danger
@@ -69,19 +72,21 @@ cd ridge-ui
 # Install dependencies
 npm install
 
-# Start development server
-npm run dev
+# Start library development
+npm run lib:build
 
 # Launch Storybook for component development
-npm run storybook
+npm run storybook:dev
 ```
 
 ### Available Scripts
-- `npm run dev` - Start Vite development server
-- `npm run build` - Build library for production
-- `npm run preview` - Preview production build
-- `npm run storybook` - Launch Storybook development server
-- `npm run build-storybook` - Build Storybook for deployment
+- `npm run lib:build` - Build library for production
+- `npm run lib:preview` - Preview production build
+- `npm run storybook:dev` - Launch Storybook development server
+- `npm run storybook:build` - Build Storybook for deployment
+- `npm run docs:dev` - Start documentation development server
+- `npm run docs:build` - Build documentation site
+- `npm run docs:preview` - Preview documentation site
 
 ## 🎨 Component Examples
 
@@ -101,6 +106,59 @@ npm run storybook
 <rdg-button href="https://example.com">Link Button</rdg-button>
 ```
 
+### Input Components
+```html
+<!-- Basic text input -->
+<rdg-input 
+  label="Full Name" 
+  placeholder="Enter your name" 
+  variant="outlined"
+  size="medium">
+</rdg-input>
+
+<!-- Password input with validation -->
+<rdg-input 
+  type="password" 
+  label="Password" 
+  required
+  error-message="Password is required">
+</rdg-input>
+
+<!-- Email input with icons -->
+<rdg-input 
+  type="email" 
+  label="Email" 
+  leading-icon="📧"
+  variant="filled">
+</rdg-input>
+```
+
+### Dropdown Components
+```html
+<!-- Basic dropdown -->
+<rdg-dropdown 
+  placeholder="Select an option..."
+  variant="primary"
+  size="medium">
+</rdg-dropdown>
+
+<!-- Multi-select dropdown with search -->
+<rdg-dropdown 
+  placeholder="Choose multiple..."
+  multiselect
+  searchable
+  clearable
+  variant="outlined">
+</rdg-dropdown>
+
+<!-- Dropdown with custom styling -->
+<rdg-dropdown 
+  variant="outline"
+  size="large"
+  search-placeholder="Type to filter...">
+</rdg-dropdown>
+```
+
 ## 🚧 Roadmap & Coming Features
 
 ### 🔄 Phase 1 (Current MVP)
@@ -109,11 +167,11 @@ npm run storybook
 - [x] Storybook documentation
 - [x] Basic build system
 
-### 📋 Phase 2 (Next Release)
-- [ ] Input components (text, email, password, etc.)
+### 📋 Phase 2 (Current Progress)
+- [x] Input components (text, email, password, etc.)
+- [x] Select/Dropdown component with multi-select and search
 - [ ] Form validation utilities
 - [ ] Checkbox and Radio components
-- [ ] Select/Dropdown component
 - [ ] Comprehensive testing suite
 
 ### 🎯 Phase 3 (Future Releases)
@@ -144,8 +202,11 @@ npm run storybook
 ridge-ui/
 ├── src/
 │   ├── components/
-│   │   └── button/           # Button component
+│   │   ├── button/           # Button component
+│   │   ├── input/            # Input component
+│   │   └── dropdown/         # Dropdown component
 │   └── index.ts              # Main entry point
+├── docs/                     # Next.js documentation site
 ├── dist/                     # Built library files
 ├── .storybook/               # Storybook configuration
 └── package.json              # Package configuration
@@ -184,7 +245,7 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 - **Repository**: https://github.com/billymcdowell/ridge-ui
 - **Issues**: https://github.com/billymcdowell/ridge-ui/issues
-- **Storybook**: [Coming soon - deployed documentation]
+- **Storybook**: [Interactive Component Documentation](https://billymcdowell.github.io/ridge-ui/storybook)
 - **NPM Package**: [Coming soon - published package]
 
 ---

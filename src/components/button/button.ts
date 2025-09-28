@@ -38,22 +38,22 @@ export class RdgButton extends LitElement {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
+      gap: var(--rdg-space-2);
       border: none;
-      border-radius: 0.375rem;
-      font-family: system-ui, -apple-system, sans-serif;
-      font-weight: 500;
+      border-radius: var(--rdg-radius);
+      font-family: var(--rdg-font-family);
+      font-weight: var(--rdg-font-weight-medium);
       text-decoration: none;
       cursor: pointer;
-      transition: all 0.2s ease-in-out;
+      transition: all var(--rdg-transition);
       position: relative;
       overflow: hidden;
     }
 
     .button:focus {
       outline: 2px solid transparent;
-      outline-offset: 2px;
-      box-shadow: 0 0 0 2px var(--focus-ring-color, #3b82f6);
+      outline-offset: var(--rdg-focus-ring-offset);
+      box-shadow: 0 0 0 2px var(--rdg-focus-ring);
     }
 
     .button:disabled {
@@ -63,89 +63,89 @@ export class RdgButton extends LitElement {
 
     /* Sizes */
     .small {
-      padding: 0.375rem 0.75rem;
-      font-size: 0.875rem;
-      line-height: 1.25rem;
+      padding: var(--rdg-space-1) var(--rdg-space-3);
+      font-size: var(--rdg-font-size-sm);
+      line-height: var(--rdg-line-height-tight);
     }
 
     .medium {
-      padding: 0.5rem 1rem;
-      font-size: 0.875rem;
-      line-height: 1.25rem;
+      padding: var(--rdg-space-2) var(--rdg-space-4);
+      font-size: var(--rdg-font-size-sm);
+      line-height: var(--rdg-line-height-tight);
     }
 
     .large {
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      line-height: 1.5rem;
+      padding: var(--rdg-space-3) var(--rdg-space-6);
+      font-size: var(--rdg-font-size-base);
+      line-height: var(--rdg-line-height-normal);
     }
 
     /* Variants */
     .primary {
-      background-color: #3b82f6;
-      color: white;
+      background-color: var(--rdg-primary);
+      color: var(--rdg-text-on-primary);
     }
 
     .primary:hover:not(:disabled) {
-      background-color: #2563eb;
+      background-color: var(--rdg-primary-hover);
     }
 
     .primary:active:not(:disabled) {
-      background-color: #1d4ed8;
+      background-color: var(--rdg-primary-active);
     }
 
     .secondary {
-      background-color: #6b7280;
-      color: white;
+      background-color: var(--rdg-secondary);
+      color: var(--rdg-text-on-primary);
     }
 
     .secondary:hover:not(:disabled) {
-      background-color: #4b5563;
+      background-color: var(--rdg-secondary-hover);
     }
 
     .secondary:active:not(:disabled) {
-      background-color: #374151;
+      background-color: var(--rdg-secondary-active);
     }
 
     .outline {
       background-color: transparent;
-      color: #3b82f6;
-      border: 1px solid #3b82f6;
+      color: var(--rdg-primary);
+      border: 1px solid var(--rdg-primary);
     }
 
     .outline:hover:not(:disabled) {
-      background-color: #3b82f6;
-      color: white;
+      background-color: var(--rdg-primary);
+      color: var(--rdg-text-on-primary);
     }
 
     .outline:active:not(:disabled) {
-      background-color: #2563eb;
+      background-color: var(--rdg-primary-hover);
     }
 
     .ghost {
       background-color: transparent;
-      color: #3b82f6;
+      color: var(--rdg-primary);
     }
 
     .ghost:hover:not(:disabled) {
-      background-color: #f3f4f6;
+      background-color: var(--rdg-surface-hover);
     }
 
     .ghost:active:not(:disabled) {
-      background-color: #e5e7eb;
+      background-color: var(--rdg-surface-active);
     }
 
     .danger {
-      background-color: #dc2627;
-      color: white;
+      background-color: var(--rdg-error);
+      color: var(--rdg-text-on-primary);
     }
 
     .danger:hover:not(:disabled) {
-      background-color: #b91c1b;
+      background-color: var(--rdg-error-hover);
     }
 
     .danger:active:not(:disabled) {
-      background-color: #991b1b;
+      background-color: var(--rdg-error-active);
     }
 
     /* Loading state */

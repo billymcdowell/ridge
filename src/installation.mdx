@@ -1,0 +1,470 @@
+# Installation & Setup
+
+Get Ridge UI up and running in your project with these simple installation steps.
+
+## Prerequisites
+
+Before installing Ridge UI, ensure you have:
+- **Node.js 16+** 
+- **npm** or **yarn** package manager
+- A modern web browser that supports Custom Elements
+
+## Package Installation
+
+### Using npm
+
+```bash
+npm install ridge-ui
+```
+
+### Using yarn
+
+```bash
+yarn add ridge-ui
+```
+
+### Using pnpm
+
+```bash
+pnpm add ridge-ui
+```
+
+## Basic Setup
+
+### 1. Import the Library
+
+The simplest way to use Ridge UI is to import the entire library:
+
+```javascript
+// Import all components
+import 'ridge-ui';
+```
+
+### 2. Use Components in HTML
+
+Once imported, Ridge UI components are available as custom elements:
+
+```html
+<rdg-button variant="primary">Click me!</rdg-button>
+<rdg-input label="Name" placeholder="Enter your name"></rdg-input>
+<rdg-dropdown placeholder="Select option..."></rdg-dropdown>
+```
+
+## Framework Integration
+
+Ridge UI components are web components, making them compatible with any framework or vanilla JavaScript.
+
+### React Integration
+
+```jsx
+// App.jsx
+import React from 'react';
+import 'ridge-ui';
+
+function App() {
+  const handleButtonClick = (event) => {
+    console.log('Button clicked!', event.detail);
+  };
+
+  return (
+    <div>
+      <rdg-button 
+        variant="primary" 
+        size="medium"
+        onButtonClick={handleButtonClick}
+      >
+        React Button
+      </rdg-button>
+      
+      <rdg-input 
+        label="Email"
+        type="email"
+        placeholder="Enter email"
+      />
+    </div>
+  );
+}
+
+export default App;
+```
+
+#### React TypeScript Setup
+
+```tsx
+// types.d.ts - Add to your project for TypeScript support
+declare namespace JSX {
+  interface IntrinsicElements {
+    'rdg-button': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+      variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
+      size?: 'small' | 'medium' | 'large';
+      disabled?: boolean;
+      loading?: boolean;
+      href?: string;
+    };
+    'rdg-input': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+      label?: string;
+      type?: 'text' | 'email' | 'password' | 'number';
+      placeholder?: string;
+      variant?: 'outlined' | 'filled';
+      size?: 'small' | 'medium' | 'large';
+      required?: boolean;
+      disabled?: boolean;
+      'error-message'?: string;
+      'leading-icon'?: string;
+      'trailing-icon'?: string;
+    };
+    'rdg-dropdown': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+      placeholder?: string;
+      variant?: 'primary' | 'outlined' | 'outline';
+      size?: 'small' | 'medium' | 'large';
+      multiselect?: boolean;
+      searchable?: boolean;
+      clearable?: boolean;
+      disabled?: boolean;
+      'search-placeholder'?: string;
+    };
+  }
+}
+```
+
+### Vue Integration
+
+```vue
+<!-- App.vue -->
+<template>
+  <div>
+    <rdg-button 
+      variant="primary" 
+      @button-click="handleButtonClick"
+    >
+      Vue Button
+    </rdg-button>
+    
+    <rdg-input 
+      label="Username"
+      placeholder="Enter username"
+      @input-change="handleInputChange"
+    />
+  </div>
+</template>
+
+<script>
+import 'ridge-ui';
+
+export default {
+  name: 'App',
+  methods: {
+    handleButtonClick(event) {
+      console.log('Button clicked:', event.detail);
+    },
+    handleInputChange(event) {
+      console.log('Input changed:', event.detail.value);
+    }
+  }
+}
+</script>
+```
+
+#### Vue 3 Composition API
+
+```vue
+<template>
+  <rdg-button variant="primary" @button-click="handleClick">
+    Vue 3 Button
+  </rdg-button>
+</template>
+
+<script setup>
+import 'ridge-ui';
+
+const handleClick = (event) => {
+  console.log('Clicked:', event.detail);
+};
+</script>
+```
+
+### Angular Integration
+
+#### 1. Enable Custom Elements
+
+```typescript
+// app.module.ts
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import 'ridge-ui';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule],
+  providers: [],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA] // Enable custom elements
+})
+export class AppModule { }
+```
+
+#### 2. Use in Components
+
+```typescript
+// app.component.ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <rdg-button 
+      variant="primary" 
+      (button-click)="handleButtonClick($event)"
+    >
+      Angular Button
+    </rdg-button>
+    
+    <rdg-input 
+      label="Email"
+      type="email"
+      (input-change)="handleInputChange($event)"
+    ></rdg-input>
+  `
+})
+export class AppComponent {
+  handleButtonClick(event: CustomEvent) {
+    console.log('Button clicked:', event.detail);
+  }
+  
+  handleInputChange(event: CustomEvent) {
+    console.log('Input changed:', event.detail.value);
+  }
+}
+```
+
+### Svelte Integration
+
+```svelte
+<!-- App.svelte -->
+<script>
+  import 'ridge-ui';
+  
+  function handleButtonClick(event) {
+    console.log('Button clicked:', event.detail);
+  }
+</script>
+
+<rdg-button 
+  variant="primary" 
+  on:button-click={handleButtonClick}
+>
+  Svelte Button
+</rdg-button>
+
+<rdg-input 
+  label="Name" 
+  placeholder="Enter your name"
+/>
+```
+
+### Vanilla JavaScript
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ridge UI Example</title>
+</head>
+<body>
+  <rdg-button id="myButton" variant="primary">Click me!</rdg-button>
+  <rdg-input id="myInput" label="Name" placeholder="Enter name"></rdg-input>
+
+  <script type="module">
+    import 'ridge-ui';
+    
+    // Add event listeners
+    document.getElementById('myButton').addEventListener('button-click', (event) => {
+      console.log('Button clicked!', event.detail);
+    });
+    
+    document.getElementById('myInput').addEventListener('input-change', (event) => {
+      console.log('Input value:', event.detail.value);
+    });
+  </script>
+</body>
+</html>
+```
+
+## TypeScript Setup
+
+### 1. Install Type Definitions
+
+Ridge UI includes TypeScript definitions out of the box. For better IDE support, you can import types explicitly:
+
+```typescript
+import type { 
+  ButtonVariant, 
+  ButtonSize, 
+  InputVariant,
+  DropdownVariant 
+} from 'ridge-ui';
+```
+
+### 2. Component References
+
+```typescript
+import { RdgButton, RdgInput, RdgDropdown } from 'ridge-ui';
+
+// Create components programmatically
+const button = document.createElement('rdg-button') as RdgButton;
+button.variant = 'primary';
+button.size = 'large';
+button.textContent = 'Dynamic Button';
+
+const input = document.createElement('rdg-input') as RdgInput;
+input.label = 'Email';
+input.type = 'email';
+input.placeholder = 'Enter your email';
+```
+
+## CDN Usage
+
+For quick prototyping or simple projects, you can use Ridge UI directly from a CDN:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ridge UI CDN Example</title>
+</head>
+<body>
+  <rdg-button variant="primary">CDN Button</rdg-button>
+  
+  <!-- Load from CDN -->
+  <script type="module" src="https://unpkg.com/ridge-ui@latest/dist/ridge-ui.js"></script>
+</body>
+</html>
+```
+
+## Build Configuration
+
+### Vite Configuration
+
+If you're using Vite, no additional configuration is needed. Ridge UI works out of the box:
+
+```javascript
+// vite.config.js
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+  // Ridge UI works without additional configuration
+});
+```
+
+### Webpack Configuration
+
+For Webpack projects, ensure you can handle ES modules:
+
+```javascript
+// webpack.config.js
+module.exports = {
+  // ... other config
+  resolve: {
+    extensions: ['.js', '.ts', '.jsx', '.tsx']
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader'
+        }
+      }
+    ]
+  }
+};
+```
+
+## Environment Setup
+
+### Development Environment
+
+For local development with Ridge UI source code:
+
+```bash
+# Clone the repository
+git clone https://github.com/billymcdowell/ridge-ui.git
+cd ridge-ui
+
+# Install dependencies
+npm install
+
+# Build the library
+npm run lib:build
+
+# Start Storybook for component development
+npm run storybook:dev
+
+# Start documentation site
+npm run docs:dev
+```
+
+### Available Scripts
+- `npm run lib:build` - Build library for production
+- `npm run lib:preview` - Preview production build
+- `npm run storybook:dev` - Launch Storybook development server
+- `npm run storybook:build` - Build Storybook for deployment
+- `npm run docs:dev` - Start documentation development server
+- `npm run docs:build` - Build documentation site
+
+## Troubleshooting Installation
+
+### Common Issues
+
+**Module not found errors?**
+```bash
+# Clear npm cache
+npm cache clean --force
+
+# Reinstall dependencies
+rm -rf node_modules package-lock.json
+npm install
+```
+
+**TypeScript errors?**
+```bash
+# Ensure you have the latest version
+npm update ridge-ui
+
+# Check TypeScript configuration
+npx tsc --noEmit
+```
+
+**Components not rendering?**
+- Ensure you've imported the library: `import 'ridge-ui'`
+- Check browser console for errors
+- Verify component names are correct (e.g., `rdg-button`)
+- Make sure your browser supports Custom Elements
+
+**Build errors with bundlers?**
+- Ensure your bundler can handle ES modules
+- Check for conflicting dependencies
+- Try clearing build cache
+
+### Browser Support
+
+Ridge UI supports all modern browsers that implement Custom Elements v1:
+- Chrome 67+
+- Firefox 63+
+- Safari 13.1+
+- Edge 79+
+
+For older browsers, you may need polyfills:
+
+```html
+<!-- Add before importing Ridge UI -->
+<script src="https://unpkg.com/@webcomponents/webcomponentsjs@2/webcomponents-loader.js"></script>
+<script type="module" src="path/to/ridge-ui.js"></script>
+```
+
+---
+
+Installation complete! Next, check out our [Usage Guide](/usage) to learn how to use Ridge UI components in your application.

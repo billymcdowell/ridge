@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ridge UI Theme Demo</title>
+    <style>
+        /* Import the theme CSS */
+        @import url('./theme.css');
+        
+        body {
+            font-family: var(--rdg-font-family);
+            background-color: var(--rdg-background);
+            color: var(--rdg-text-primary);
+            margin: 0;
+            padding: var(--rdg-space-6);
+            transition: background-color var(--rdg-transition), color var(--rdg-transition);
+        }
+        
+        .demo-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .theme-controls {
+            margin-bottom: var(--rdg-space-6);
+            padding: var(--rdg-space-4);
+            background: var(--rdg-surface);
+            border: 1px solid var(--rdg-border-primary);
+            border-radius: var(--rdg-radius);
+        }
+        
+        .demo-section {
+            margin-bottom: var(--rdg-space-6);
+            padding: var(--rdg-space-4);
+            background: var(--rdg-surface);
+            border: 1px solid var(--rdg-border-primary);
+            border-radius: var(--rdg-radius);
+        }
+        
+        .demo-section h2 {
+            margin-top: 0;
+            color: var(--rdg-text-primary);
+        }
+        
+        .component-group {
+            display: flex;
+            gap: var(--rdg-space-3);
+            margin-bottom: var(--rdg-space-4);
+            flex-wrap: wrap;
+        }
+        
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: var(--rdg-space-2);
+            margin-top: var(--rdg-space-3);
+        }
+        
+        .color-swatch {
+            padding: var(--rdg-space-2);
+            border-radius: var(--rdg-radius);
+            text-align: center;
+            font-size: var(--rdg-font-size-xs);
+            border: 1px solid var(--rdg-border-primary);
+        }
+        
+        .primary-swatch { background-color: var(--rdg-primary); color: var(--rdg-text-on-primary); }
+        .secondary-swatch { background-color: var(--rdg-secondary); color: var(--rdg-text-on-primary); }
+        .success-swatch { background-color: var(--rdg-success); color: var(--rdg-text-on-primary); }
+        .warning-swatch { background-color: var(--rdg-warning); color: var(--rdg-text-on-primary); }
+        .error-swatch { background-color: var(--rdg-error); color: var(--rdg-text-on-primary); }
+        .surface-swatch { background-color: var(--rdg-surface); color: var(--rdg-text-primary); }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>Ridge UI Theme Demo</h1>
+        
+        <div class="theme-controls">
+            <h2>Theme Controls</h2>
+            <div class="component-group">
+                <rdg-button id="light-theme" variant="outline">Light</rdg-button>
+                <rdg-button id="dark-theme" variant="outline">Dark</rdg-button>
+                <rdg-button id="high-contrast-theme" variant="outline">High Contrast</rdg-button>
+                <rdg-button id="ocean-theme" variant="outline">Ocean</rdg-button>
+                <rdg-button id="forest-theme" variant="outline">Forest</rdg-button>
+            </div>
+            <div class="component-group">
+                <rdg-button id="sunset-theme" variant="outline">Sunset</rdg-button>
+                <rdg-button id="purple-theme" variant="outline">Purple</rdg-button>
+                <rdg-button id="rose-theme" variant="outline">Rose</rdg-button>
+                <rdg-button id="midnight-theme" variant="outline">Midnight</rdg-button>
+                <rdg-button id="monochrome-theme" variant="outline">Monochrome</rdg-button>
+            </div>
+            <div class="component-group">
+                <rdg-button id="toggle-theme" variant="ghost">Toggle Light/Dark</rdg-button>
+                <rdg-button id="cycle-theme" variant="ghost">Cycle All Themes</rdg-button>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>Buttons</h2>
+            <div class="component-group">
+                <rdg-button variant="primary">Primary</rdg-button>
+                <rdg-button variant="secondary">Secondary</rdg-button>
+                <rdg-button variant="outline">Outline</rdg-button>
+                <rdg-button variant="ghost">Ghost</rdg-button>
+                <rdg-button variant="danger">Danger</rdg-button>
+                <rdg-button variant="primary" disabled>Disabled</rdg-button>
+                <rdg-button variant="primary" loading>Loading</rdg-button>
+            </div>
+            
+            <h3>Button Sizes</h3>
+            <div class="component-group">
+                <rdg-button variant="primary" size="small">Small</rdg-button>
+                <rdg-button variant="primary" size="medium">Medium</rdg-button>
+                <rdg-button variant="primary" size="large">Large</rdg-button>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>Inputs</h2>
+            <div class="component-group">
+                <rdg-input variant="outlined" placeholder="Outlined input" label="Outlined"></rdg-input>
+                <rdg-input variant="filled" placeholder="Filled input" label="Filled"></rdg-input>
+                <rdg-input variant="plain" placeholder="Plain input" label="Plain"></rdg-input>
+            </div>
+            
+            <h3>Input States</h3>
+            <div class="component-group">
+                <rdg-input placeholder="Normal" label="Normal"></rdg-input>
+                <rdg-input placeholder="Disabled" label="Disabled" disabled></rdg-input>
+                <rdg-input placeholder="Error" label="Error" error-message="This field has an error"></rdg-input>
+                <rdg-input placeholder="With helper" label="With Helper" helper-text="This is helper text"></rdg-input>
+            </div>
+            
+            <h3>Input Sizes</h3>
+            <div class="component-group">
+                <rdg-input size="small" placeholder="Small" label="Small"></rdg-input>
+                <rdg-input size="medium" placeholder="Medium" label="Medium"></rdg-input>
+                <rdg-input size="large" placeholder="Large" label="Large"></rdg-input>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>Dropdowns</h2>
+            <div class="component-group">
+                <rdg-dropdown id="primary-dropdown" variant="primary" placeholder="Primary dropdown"></rdg-dropdown>
+                <rdg-dropdown id="secondary-dropdown" variant="secondary" placeholder="Secondary dropdown"></rdg-dropdown>
+                <rdg-dropdown id="outline-dropdown" variant="outline" placeholder="Outline dropdown"></rdg-dropdown>
+            </div>
+            
+            <h3>Dropdown Sizes</h3>
+            <div class="component-group">
+                <rdg-dropdown id="small-dropdown" size="small" placeholder="Small dropdown"></rdg-dropdown>
+                <rdg-dropdown id="medium-dropdown" size="medium" placeholder="Medium dropdown"></rdg-dropdown>
+                <rdg-dropdown id="large-dropdown" size="large" placeholder="Large dropdown"></rdg-dropdown>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>Color Palette</h2>
+            <div class="color-palette">
+                <div class="color-swatch primary-swatch">Primary</div>
+                <div class="color-swatch secondary-swatch">Secondary</div>
+                <div class="color-swatch success-swatch">Success</div>
+                <div class="color-swatch warning-swatch">Warning</div>
+                <div class="color-swatch error-swatch">Error</div>
+                <div class="color-swatch surface-swatch">Surface</div>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module">
+        // Import components and theme utilities
+        import './components/button/button.js';
+        import './components/input/input.js';
+        import './components/dropdown/dropdown.js';
+        import { setTheme, getTheme, toggleTheme, cycleTheme, initializeTheme } from './theme-utils.js';
+        
+        // Initialize theme
+        initializeTheme();
+        
+        // Set up dropdown options
+        const dropdownOptions = [
+            { value: 'option1', label: 'Option 1' },
+            { value: 'option2', label: 'Option 2' },
+            { value: 'option3', label: 'Option 3' },
+            { value: 'option4', label: 'Option 4' },
+        ];
+        
+        document.querySelectorAll('rdg-dropdown').forEach(dropdown => {
+            dropdown.options = dropdownOptions;
+        });
+        
+        // Theme control event listeners
+        document.getElementById('light-theme').addEventListener('click', () => {
+            setTheme('light');
+        });
+        
+        document.getElementById('dark-theme').addEventListener('click', () => {
+            setTheme('dark');
+        });
+        
+        document.getElementById('high-contrast-theme').addEventListener('click', () => {
+            setTheme('high-contrast');
+        });
+        
+        document.getElementById('ocean-theme').addEventListener('click', () => {
+            setTheme('ocean');
+        });
+        
+        document.getElementById('forest-theme').addEventListener('click', () => {
+            setTheme('forest');
+        });
+        
+        document.getElementById('sunset-theme').addEventListener('click', () => {
+            setTheme('sunset');
+        });
+        
+        document.getElementById('purple-theme').addEventListener('click', () => {
+            setTheme('purple');
+        });
+        
+        document.getElementById('rose-theme').addEventListener('click', () => {
+            setTheme('rose');
+        });
+        
+        document.getElementById('midnight-theme').addEventListener('click', () => {
+            setTheme('midnight');
+        });
+        
+        document.getElementById('monochrome-theme').addEventListener('click', () => {
+            setTheme('monochrome');
+        });
+        
+        document.getElementById('toggle-theme').addEventListener('click', () => {
+            toggleTheme();
+        });
+        
+        document.getElementById('cycle-theme').addEventListener('click', () => {
+            cycleTheme();
+        });
+        
+        // Listen for theme changes
+        document.documentElement.addEventListener('rdg-theme-change', (event) => {
+            console.log('Theme changed to:', event.detail.theme);
+        });
+        
+        // Log current theme
+        console.log('Current theme:', getTheme());
+    </script>
+</body>
+</html>

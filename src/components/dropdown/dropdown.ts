@@ -80,19 +80,19 @@ export class RdgDropdown extends LitElement {
       justify-content: space-between;
       width: 100%;
       border: none;
-      border-radius: 0.375rem;
-      font-family: system-ui, -apple-system, sans-serif;
-      font-weight: 400;
+      border-radius: var(--rdg-radius);
+      font-family: var(--rdg-font-family);
+      font-weight: var(--rdg-font-weight-normal);
       text-align: left;
       cursor: pointer;
-      transition: all 0.2s ease-in-out;
+      transition: all var(--rdg-transition);
       position: relative;
     }
 
     .dropdown-trigger:focus {
       outline: 2px solid transparent;
-      outline-offset: 2px;
-      box-shadow: 0 0 0 2px var(--focus-ring-color, #3b82f6);
+      outline-offset: var(--rdg-focus-ring-offset);
+      box-shadow: 0 0 0 2px var(--rdg-focus-ring);
     }
 
     .dropdown-trigger:disabled {
@@ -108,7 +108,7 @@ export class RdgDropdown extends LitElement {
     }
 
     .dropdown-placeholder {
-      color: #9ca3af;
+      color: var(--rdg-text-placeholder);
     }
 
     .dropdown-value {
@@ -119,8 +119,8 @@ export class RdgDropdown extends LitElement {
     }
 
     .dropdown-icon {
-      margin-left: 0.5rem;
-      transition: transform 0.2s ease-in-out;
+      margin-left: var(--rdg-space-2);
+      transition: transform var(--rdg-transition);
       flex-shrink: 0;
     }
 
@@ -129,21 +129,21 @@ export class RdgDropdown extends LitElement {
     }
 
     .clear-button {
-      margin-left: 0.25rem;
-      margin-right: 0.25rem;
-      padding: 0.125rem;
+      margin-left: var(--rdg-space-1);
+      margin-right: var(--rdg-space-1);
+      padding: var(--rdg-space-1);
       border: none;
       background: none;
       cursor: pointer;
-      border-radius: 0.25rem;
-      color: #6b7280;
-      transition: all 0.2s ease-in-out;
+      border-radius: var(--rdg-radius-sm);
+      color: var(--rdg-text-tertiary);
+      transition: all var(--rdg-transition);
       flex-shrink: 0;
     }
 
     .clear-button:hover {
-      background-color: rgba(0, 0, 0, 0.1);
-      color: #374151;
+      background-color: var(--rdg-surface-hover);
+      color: var(--rdg-text-secondary);
     }
 
     .dropdown-menu {
@@ -151,14 +151,14 @@ export class RdgDropdown extends LitElement {
       top: 100%;
       left: 0;
       right: 0;
-      background: white;
-      border: 1px solid #e5e7eb;
-      border-radius: 0.375rem;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      z-index: 50;
+      background: var(--rdg-surface);
+      border: 1px solid var(--rdg-border-secondary);
+      border-radius: var(--rdg-radius);
+      box-shadow: var(--rdg-shadow-lg);
+      z-index: var(--rdg-z-dropdown);
       max-height: 200px;
       overflow-y: auto;
-      margin-top: 0.25rem;
+      margin-top: var(--rdg-space-1);
       display: none;
     }
 
@@ -167,80 +167,84 @@ export class RdgDropdown extends LitElement {
     }
 
     .search-container {
-      padding: 0.5rem;
-      border-bottom: 1px solid #e5e7eb;
+      padding: var(--rdg-space-2);
+      border-bottom: 1px solid var(--rdg-border-secondary);
     }
 
     .search-input {
       width: 100%;
-      padding: 0.375rem 0.75rem;
-      border: 1px solid #d1d5db;
-      border-radius: 0.25rem;
-      font-size: 0.875rem;
+      padding: var(--rdg-space-1) var(--rdg-space-3);
+      border: 1px solid var(--rdg-border-primary);
+      border-radius: var(--rdg-radius-sm);
+      font-size: var(--rdg-font-size-sm);
       outline: none;
+      background: var(--rdg-background);
+      color: var(--rdg-text-primary);
     }
 
     .search-input:focus {
-      border-color: #3b82f6;
-      box-shadow: 0 0 0 1px #3b82f6;
+      border-color: var(--rdg-border-focus);
+      box-shadow: 0 0 0 1px var(--rdg-border-focus);
     }
 
     .dropdown-option {
       display: block;
       width: 100%;
-      padding: 0.75rem;
+      padding: var(--rdg-space-3);
       border: none;
       background: none;
       text-align: left;
       cursor: pointer;
-      transition: background-color 0.2s ease-in-out;
+      transition: background-color var(--rdg-transition);
       font-family: inherit;
       font-size: inherit;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      color: var(--rdg-text-primary);
     }
 
     .dropdown-option:hover:not(:disabled),
     .dropdown-option.highlighted {
-      background-color: #f3f4f6;
+      background-color: var(--rdg-surface-hover);
     }
 
     .dropdown-option:disabled {
       cursor: not-allowed;
       opacity: 0.5;
       background-color: transparent;
+      color: var(--rdg-text-disabled);
     }
 
     .dropdown-option.selected {
-      background-color: #dbeafe;
-      color: #1e40af;
-      font-weight: 500;
+      background-color: var(--rdg-primary-light);
+      color: var(--rdg-primary);
+      font-weight: var(--rdg-font-weight-medium);
     }
 
     .option-content {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: var(--rdg-space-2);
       width: 100%;
     }
 
     .option-checkbox {
       width: 1rem;
       height: 1rem;
-      border: 2px solid #d1d5db;
-      border-radius: 0.25rem;
+      border: 2px solid var(--rdg-border-primary);
+      border-radius: var(--rdg-radius-sm);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      transition: all 0.2s ease-in-out;
+      transition: all var(--rdg-transition);
     }
 
     .option-checkbox.checked {
-      background-color: #3b82f6;
-      border-color: #3b82f6;
-      color: white;
+      background-color: var(--rdg-primary);
+      border-color: var(--rdg-primary);
+      color: var(--rdg-text-on-primary);
     }
 
     .option-checkbox svg {
@@ -257,104 +261,104 @@ export class RdgDropdown extends LitElement {
     }
 
     .selected-count {
-      background-color: #3b82f6;
-      color: white;
-      border-radius: 9999px;
-      padding: 0.125rem 0.5rem;
-      font-size: 0.75rem;
-      font-weight: 500;
-      margin-left: 0.5rem;
+      background-color: var(--rdg-primary);
+      color: var(--rdg-text-on-primary);
+      border-radius: var(--rdg-radius-full);
+      padding: var(--rdg-space-1) var(--rdg-space-2);
+      font-size: var(--rdg-font-size-xs);
+      font-weight: var(--rdg-font-weight-medium);
+      margin-left: var(--rdg-space-2);
       flex-shrink: 0;
     }
 
     .no-options {
-      padding: 0.75rem;
+      padding: var(--rdg-space-3);
       text-align: center;
-      color: #6b7280;
+      color: var(--rdg-text-tertiary);
       font-style: italic;
     }
 
     /* Sizes */
     .small .dropdown-trigger {
-      padding: 0.375rem 0.75rem;
-      font-size: 0.875rem;
-      line-height: 1.25rem;
+      padding: var(--rdg-space-1) var(--rdg-space-3);
+      font-size: var(--rdg-font-size-sm);
+      line-height: var(--rdg-line-height-tight);
     }
 
     .small .dropdown-option {
-      padding: 0.5rem 0.75rem;
-      font-size: 0.875rem;
+      padding: var(--rdg-space-2) var(--rdg-space-3);
+      font-size: var(--rdg-font-size-sm);
     }
 
     .medium .dropdown-trigger {
-      padding: 0.5rem 1rem;
-      font-size: 0.875rem;
-      line-height: 1.25rem;
+      padding: var(--rdg-space-2) var(--rdg-space-4);
+      font-size: var(--rdg-font-size-sm);
+      line-height: var(--rdg-line-height-tight);
     }
 
     .medium .dropdown-option {
-      padding: 0.75rem 1rem;
-      font-size: 0.875rem;
+      padding: var(--rdg-space-3) var(--rdg-space-4);
+      font-size: var(--rdg-font-size-sm);
     }
 
     .large .dropdown-trigger {
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      line-height: 1.5rem;
+      padding: var(--rdg-space-3) var(--rdg-space-6);
+      font-size: var(--rdg-font-size-base);
+      line-height: var(--rdg-line-height-normal);
     }
 
     .large .dropdown-option {
-      padding: 1rem 1.5rem;
-      font-size: 1rem;
+      padding: var(--rdg-space-4) var(--rdg-space-6);
+      font-size: var(--rdg-font-size-base);
     }
 
     /* Variants */
     .primary .dropdown-trigger {
-      background-color: white;
-      color: #374151;
-      border: 1px solid #d1d5db;
+      background-color: var(--rdg-background);
+      color: var(--rdg-text-secondary);
+      border: 1px solid var(--rdg-border-primary);
     }
 
     .primary .dropdown-trigger:hover:not(:disabled) {
-      border-color: #9ca3af;
+      border-color: var(--rdg-border-hover);
     }
 
     .primary .dropdown-trigger:focus {
-      border-color: #3b82f6;
+      border-color: var(--rdg-border-focus);
     }
 
     .secondary .dropdown-trigger {
-      background-color: #f9fafb;
-      color: #374151;
-      border: 1px solid #e5e7eb;
+      background-color: var(--rdg-surface-variant);
+      color: var(--rdg-text-secondary);
+      border: 1px solid var(--rdg-border-secondary);
     }
 
     .secondary .dropdown-trigger:hover:not(:disabled) {
-      background-color: #f3f4f6;
-      border-color: #d1d5db;
+      background-color: var(--rdg-surface-hover);
+      border-color: var(--rdg-border-primary);
     }
 
     .secondary .dropdown-trigger:focus {
-      border-color: #3b82f6;
-      background-color: white;
+      border-color: var(--rdg-border-focus);
+      background-color: var(--rdg-background);
     }
 
     .outline .dropdown-trigger {
       background-color: transparent;
-      color: #3b82f6;
-      border: 2px solid #3b82f6;
+      color: var(--rdg-primary);
+      border: 2px solid var(--rdg-primary);
     }
 
     .outline .dropdown-trigger:hover:not(:disabled) {
-      background-color: #f0f9ff;
+      background-color: var(--rdg-primary-lighter);
     }
 
     .outline .dropdown-trigger:focus {
-      background-color: #f0f9ff;
+      background-color: var(--rdg-primary-lighter);
     }
 
     .outline .dropdown-placeholder {
-      color: #60a5fa;
+      color: var(--rdg-primary-400);
     }
 
     /* Animation */
@@ -370,7 +374,7 @@ export class RdgDropdown extends LitElement {
     }
 
     .dropdown-menu.open {
-      animation: fadeIn 0.2s ease-out;
+      animation: fadeIn var(--rdg-transition) ease-out;
     }
   `;
 

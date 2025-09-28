@@ -1,0 +1,677 @@
+# Usage Guide
+
+Learn how to effectively use Ridge UI components in your applications with detailed examples, best practices, and advanced techniques.
+
+## Component Overview
+
+Ridge UI currently provides three core components, each designed with flexibility and accessibility in mind:
+
+- **Button Component**: Interactive buttons with multiple variants and states
+- **Input Component**: Form inputs with validation and customization options
+- **Dropdown Component**: Select dropdowns with advanced features like multi-select and search
+
+## Button Component
+
+The button component is the foundation of user interactions in your application.
+
+### Basic Usage
+
+```html
+<rdg-button>Default Button</rdg-button>
+```
+
+### Variants
+
+Choose from five distinct button styles:
+
+```html
+<!-- Primary button for main actions -->
+<rdg-button variant="primary">Primary Action</rdg-button>
+
+<!-- Secondary button for supporting actions -->
+<rdg-button variant="secondary">Secondary Action</rdg-button>
+
+<!-- Outline button for subtle actions -->
+<rdg-button variant="outline">Outline Button</rdg-button>
+
+<!-- Ghost button for minimal presence -->
+<rdg-button variant="ghost">Ghost Button</rdg-button>
+
+<!-- Danger button for destructive actions -->
+<rdg-button variant="danger">Delete Item</rdg-button>
+```
+
+### Sizes
+
+Three sizes to fit different contexts:
+
+```html
+<rdg-button size="small">Small</rdg-button>
+<rdg-button size="medium">Medium</rdg-button>
+<rdg-button size="large">Large</rdg-button>
+```
+
+### States and Properties
+
+```html
+<!-- Disabled state -->
+<rdg-button disabled>Disabled Button</rdg-button>
+
+<!-- Loading state with spinner -->
+<rdg-button loading>Loading...</rdg-button>
+
+<!-- Link button (renders as anchor tag) -->
+<rdg-button href="https://example.com">Visit Website</rdg-button>
+
+<!-- Link button with target -->
+<rdg-button href="https://example.com" target="_blank">Open in New Tab</rdg-button>
+```
+
+### Event Handling
+
+```javascript
+// Listen for button clicks
+document.addEventListener('button-click', (event) => {
+  console.log('Button clicked:', event.detail);
+  console.log('Button element:', event.target);
+});
+
+// Or attach to specific button
+const button = document.querySelector('#my-button');
+button.addEventListener('button-click', (event) => {
+  // Handle click
+});
+```
+
+### Advanced Button Examples
+
+```html
+<!-- Form submission button -->
+<form>
+  <rdg-input label="Email" type="email" required></rdg-input>
+  <rdg-button variant="primary" type="submit">Submit Form</rdg-button>
+</form>
+
+<!-- Button with custom styling -->
+<rdg-button 
+  variant="primary" 
+  size="large"
+  style="--button-border-radius: 20px; --button-padding: 16px 32px;"
+>
+  Custom Styled
+</rdg-button>
+
+<!-- Icon button (using text content) -->
+<rdg-button variant="ghost" size="small">🔍</rdg-button>
+```
+
+## Input Component
+
+Flexible input components for various data collection needs.
+
+### Basic Text Input
+
+```html
+<rdg-input 
+  label="Full Name" 
+  placeholder="Enter your full name"
+  variant="outlined"
+  size="medium">
+</rdg-input>
+```
+
+### Input Types
+
+```html
+<!-- Email input with validation -->
+<rdg-input 
+  type="email" 
+  label="Email Address" 
+  placeholder="user@example.com"
+  required>
+</rdg-input>
+
+<!-- Password input -->
+<rdg-input 
+  type="password" 
+  label="Password" 
+  placeholder="Enter password"
+  required>
+</rdg-input>
+
+<!-- Number input -->
+<rdg-input 
+  type="number" 
+  label="Age" 
+  placeholder="Enter your age"
+  min="18"
+  max="120">
+</rdg-input>
+```
+
+### Variants and Sizes
+
+```html
+<!-- Outlined variant (default) -->
+<rdg-input variant="outlined" label="Outlined Input"></rdg-input>
+
+<!-- Filled variant -->
+<rdg-input variant="filled" label="Filled Input"></rdg-input>
+
+<!-- Different sizes -->
+<rdg-input size="small" label="Small Input"></rdg-input>
+<rdg-input size="medium" label="Medium Input"></rdg-input>
+<rdg-input size="large" label="Large Input"></rdg-input>
+```
+
+### Icons and Validation
+
+```html
+<!-- Input with leading icon -->
+<rdg-input 
+  label="Email" 
+  type="email"
+  leading-icon="📧"
+  placeholder="Enter email">
+</rdg-input>
+
+<!-- Input with trailing icon -->
+<rdg-input 
+  label="Search" 
+  trailing-icon="🔍"
+  placeholder="Search...">
+</rdg-input>
+
+<!-- Input with error state -->
+<rdg-input 
+  label="Username" 
+  required
+  error-message="Username is required"
+  placeholder="Enter username">
+</rdg-input>
+
+<!-- Input with help text -->
+<rdg-input 
+  label="Password" 
+  type="password"
+  help-text="Must be at least 8 characters"
+  placeholder="Enter password">
+</rdg-input>
+```
+
+### Input States
+
+```html
+<!-- Disabled input -->
+<rdg-input label="Disabled Field" disabled value="Cannot edit"></rdg-input>
+
+<!-- Readonly input -->
+<rdg-input label="Readonly Field" readonly value="Read only value"></rdg-input>
+
+<!-- Required input -->
+<rdg-input label="Required Field" required placeholder="This field is required"></rdg-input>
+```
+
+### Event Handling
+
+```javascript
+// Listen for input changes
+document.addEventListener('input-change', (event) => {
+  console.log('Input value:', event.detail.value);
+  console.log('Input element:', event.target);
+});
+
+// Listen for input focus/blur
+document.addEventListener('input-focus', (event) => {
+  console.log('Input focused:', event.target);
+});
+
+document.addEventListener('input-blur', (event) => {
+  console.log('Input blurred:', event.target);
+});
+```
+
+### Form Integration
+
+```html
+<form id="user-form">
+  <rdg-input 
+    name="firstName"
+    label="First Name" 
+    required
+    placeholder="Enter first name">
+  </rdg-input>
+  
+  <rdg-input 
+    name="lastName"
+    label="Last Name" 
+    required
+    placeholder="Enter last name">
+  </rdg-input>
+  
+  <rdg-input 
+    name="email"
+    type="email" 
+    label="Email" 
+    required
+    placeholder="Enter email">
+  </rdg-input>
+  
+  <rdg-button variant="primary" type="submit">Submit</rdg-button>
+</form>
+
+<script>
+document.getElementById('user-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+  // Collect form data
+  const formData = new FormData(e.target);
+  const data = Object.fromEntries(formData);
+  console.log('Form data:', data);
+});
+</script>
+```
+
+## Dropdown Component
+
+Advanced select component with search, multi-select, and customization options.
+
+### Basic Dropdown
+
+```html
+<rdg-dropdown 
+  placeholder="Select an option..."
+  variant="primary"
+  size="medium">
+</rdg-dropdown>
+```
+
+### Dropdown Variants
+
+```html
+<!-- Primary variant -->
+<rdg-dropdown variant="primary" placeholder="Primary dropdown"></rdg-dropdown>
+
+<!-- Outlined variant -->
+<rdg-dropdown variant="outlined" placeholder="Outlined dropdown"></rdg-dropdown>
+
+<!-- Outline variant (alternative spelling) -->
+<rdg-dropdown variant="outline" placeholder="Outline dropdown"></rdg-dropdown>
+```
+
+### Advanced Features
+
+```html
+<!-- Multi-select dropdown -->
+<rdg-dropdown 
+  placeholder="Choose multiple options..."
+  multiselect
+  variant="outlined">
+</rdg-dropdown>
+
+<!-- Searchable dropdown -->
+<rdg-dropdown 
+  placeholder="Search and select..."
+  searchable
+  search-placeholder="Type to filter options..."
+  variant="primary">
+</rdg-dropdown>
+
+<!-- Clearable dropdown -->
+<rdg-dropdown 
+  placeholder="Select option..."
+  clearable
+  variant="outlined">
+</rdg-dropdown>
+
+<!-- Combination of features -->
+<rdg-dropdown 
+  placeholder="Advanced dropdown..."
+  multiselect
+  searchable
+  clearable
+  search-placeholder="Search options..."
+  variant="outlined"
+  size="large">
+</rdg-dropdown>
+```
+
+### Dropdown States
+
+```html
+<!-- Disabled dropdown -->
+<rdg-dropdown 
+  placeholder="Disabled dropdown" 
+  disabled
+  variant="primary">
+</rdg-dropdown>
+
+<!-- Dropdown with custom styling -->
+<rdg-dropdown 
+  placeholder="Custom styled..."
+  variant="primary"
+  style="--dropdown-border-radius: 12px; --dropdown-padding: 12px;">
+</rdg-dropdown>
+```
+
+### Event Handling
+
+```javascript
+// Listen for selection changes
+document.addEventListener('dropdown-change', (event) => {
+  console.log('Selected value:', event.detail.value);
+  console.log('Selected values (multi):', event.detail.values);
+  console.log('Dropdown element:', event.target);
+});
+
+// Listen for dropdown open/close
+document.addEventListener('dropdown-open', (event) => {
+  console.log('Dropdown opened:', event.target);
+});
+
+document.addEventListener('dropdown-close', (event) => {
+  console.log('Dropdown closed:', event.target);
+});
+```
+
+## Styling and Theming
+
+### CSS Custom Properties
+
+Ridge UI components use CSS custom properties for theming. You can customize the appearance by setting these variables:
+
+```css
+:root {
+  /* Global theme colors */
+  --rdg-primary-color: #007bff;
+  --rdg-secondary-color: #6c757d;
+  --rdg-success-color: #28a745;
+  --rdg-danger-color: #dc3545;
+  --rdg-warning-color: #ffc107;
+  --rdg-info-color: #17a2b8;
+  
+  /* Typography */
+  --rdg-font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --rdg-font-size-sm: 0.875rem;
+  --rdg-font-size-md: 1rem;
+  --rdg-font-size-lg: 1.125rem;
+  
+  /* Spacing */
+  --rdg-spacing-xs: 0.25rem;
+  --rdg-spacing-sm: 0.5rem;
+  --rdg-spacing-md: 1rem;
+  --rdg-spacing-lg: 1.5rem;
+  --rdg-spacing-xl: 2rem;
+  
+  /* Border radius */
+  --rdg-border-radius-sm: 4px;
+  --rdg-border-radius-md: 6px;
+  --rdg-border-radius-lg: 8px;
+  
+  /* Shadows */
+  --rdg-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --rdg-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --rdg-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+```
+
+### Component-Specific Styling
+
+```css
+/* Button customization */
+rdg-button {
+  --button-padding: 12px 24px;
+  --button-font-weight: 600;
+  --button-border-radius: 8px;
+  --button-transition: all 0.2s ease;
+}
+
+/* Input customization */
+rdg-input {
+  --input-border-color: #e1e5e9;
+  --input-focus-border-color: #007bff;
+  --input-padding: 12px 16px;
+  --input-font-size: 1rem;
+}
+
+/* Dropdown customization */
+rdg-dropdown {
+  --dropdown-max-height: 200px;
+  --dropdown-border-color: #e1e5e9;
+  --dropdown-option-padding: 8px 12px;
+}
+```
+
+### Dark Mode Support
+
+```css
+/* Dark mode theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --rdg-primary-color: #4dabf7;
+    --rdg-background-color: #1a1a1a;
+    --rdg-text-color: #ffffff;
+    --rdg-border-color: #404040;
+  }
+}
+
+/* Manual dark mode class */
+.dark-theme {
+  --rdg-primary-color: #4dabf7;
+  --rdg-background-color: #1a1a1a;
+  --rdg-text-color: #ffffff;
+  --rdg-border-color: #404040;
+}
+```
+
+## Best Practices
+
+### Accessibility
+
+```html
+<!-- Always provide meaningful labels -->
+<rdg-input label="Email Address" type="email" required></rdg-input>
+
+<!-- Use appropriate button text -->
+<rdg-button variant="danger">Delete Account</rdg-button>
+
+<!-- Provide error messages for validation -->
+<rdg-input 
+  label="Password" 
+  type="password" 
+  required
+  error-message="Password must be at least 8 characters">
+</rdg-input>
+```
+
+### Performance
+
+```javascript
+// Import only what you need (when tree-shaking is available)
+import { RdgButton } from 'ridge-ui/button';
+
+// Use event delegation for multiple components
+document.addEventListener('button-click', (event) => {
+  if (event.target.matches('.action-button')) {
+    // Handle action buttons
+  }
+});
+```
+
+### Form Validation
+
+```html
+<form id="registration-form">
+  <rdg-input 
+    name="email"
+    type="email" 
+    label="Email" 
+    required
+    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+    error-message="Please enter a valid email address">
+  </rdg-input>
+  
+  <rdg-input 
+    name="password"
+    type="password" 
+    label="Password" 
+    required
+    minlength="8"
+    error-message="Password must be at least 8 characters">
+  </rdg-input>
+  
+  <rdg-button variant="primary" type="submit">Register</rdg-button>
+</form>
+
+<script>
+// Custom validation
+document.getElementById('registration-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+  const email = e.target.querySelector('[name="email"]');
+  const password = e.target.querySelector('[name="password"]');
+  
+  // Custom validation logic
+  if (!email.checkValidity()) {
+    email.setAttribute('error-message', 'Please enter a valid email');
+    return;
+  }
+  
+  if (!password.checkValidity()) {
+    password.setAttribute('error-message', 'Password is too short');
+    return;
+  }
+  
+  // Form is valid, submit data
+  console.log('Form submitted successfully');
+});
+</script>
+```
+
+### Responsive Design
+
+```css
+/* Responsive button sizes */
+@media (max-width: 768px) {
+  rdg-button {
+    --button-padding: 10px 20px;
+    --button-font-size: 0.9rem;
+  }
+}
+
+/* Responsive input layout */
+@media (max-width: 480px) {
+  rdg-input {
+    --input-padding: 10px 12px;
+  }
+}
+```
+
+## Advanced Usage Patterns
+
+### Dynamic Component Creation
+
+```javascript
+// Create components programmatically
+function createButton(text, variant = 'primary') {
+  const button = document.createElement('rdg-button');
+  button.variant = variant;
+  button.textContent = text;
+  
+  button.addEventListener('button-click', () => {
+    console.log(`${text} clicked`);
+  });
+  
+  return button;
+}
+
+// Usage
+const saveButton = createButton('Save', 'primary');
+const cancelButton = createButton('Cancel', 'secondary');
+
+document.body.appendChild(saveButton);
+document.body.appendChild(cancelButton);
+```
+
+### Component State Management
+
+```javascript
+class FormManager {
+  constructor(formElement) {
+    this.form = formElement;
+    this.inputs = formElement.querySelectorAll('rdg-input');
+    this.submitButton = formElement.querySelector('rdg-button[type="submit"]');
+    
+    this.setupValidation();
+  }
+  
+  setupValidation() {
+    this.inputs.forEach(input => {
+      input.addEventListener('input-change', () => {
+        this.validateForm();
+      });
+    });
+  }
+  
+  validateForm() {
+    const isValid = Array.from(this.inputs).every(input => 
+      input.checkValidity()
+    );
+    
+    this.submitButton.disabled = !isValid;
+  }
+  
+  getFormData() {
+    const data = {};
+    this.inputs.forEach(input => {
+      data[input.name] = input.value;
+    });
+    return data;
+  }
+}
+
+// Usage
+const formManager = new FormManager(document.getElementById('my-form'));
+```
+
+### Custom Event Handling
+
+```javascript
+// Create a custom component wrapper
+class RidgeFormField extends HTMLElement {
+  constructor() {
+    super();
+    this.innerHTML = `
+      <rdg-input></rdg-input>
+      <div class="field-help"></div>
+    `;
+    
+    this.input = this.querySelector('rdg-input');
+    this.help = this.querySelector('.field-help');
+    
+    this.setupEventHandlers();
+  }
+  
+  setupEventHandlers() {
+    this.input.addEventListener('input-change', (e) => {
+      this.dispatchEvent(new CustomEvent('field-change', {
+        detail: { value: e.detail.value, field: this }
+      }));
+    });
+  }
+  
+  set label(value) {
+    this.input.setAttribute('label', value);
+  }
+  
+  set helpText(value) {
+    this.help.textContent = value;
+  }
+}
+
+customElements.define('ridge-form-field', RidgeFormField);
+```
+
+---
+
+This usage guide covers the essential patterns and best practices for Ridge UI components. For more detailed examples and interactive demos, visit our [Storybook documentation](https://billymcdowell.github.io/ridge-ui/storybook).
